@@ -1,0 +1,50 @@
+Software Preparation:
+ 
+On your PC computer, download the Bonsai software, titled “Bonsai-2.3.exe” (this only works on computers running windows 7 or later). 
+After downloading, run and open Bonsai. 
+Go to ‘Tools’ → ‘Manage Packages’. Install all packages. The flyPAD package, the one used in these experiments, will be one of these installed packages. 
+
+You will also need to download FTDI drivers, which allow Bonsai to work properly with the flyPAD. 
+Under the ‘D2XX Drivers’ section, find the operating system you are using and download the ‘x86 (32-bit)’ or ‘x64 (64-bit)’ drivers. 
+Make sure you save these drivers in the same folder as where the Bonsai program is saved. 
+You need to connect the flyPAD to a computer via any available USB2.0 port (it may not work with blue USB 3.0 ports).
+ 
+Once you have Bonsai set up, download and open the “RunFlypad” workflow for experiment 1.
+In Bonsai there is a list of all the installed modules on the left side. This workflow already has the ‘FlyPadSource’ connected to the ‘MatrixWriter’ node. 
+Select the ‘F’ icon, and choose an available ‘LocationID’ from the dropdown options on the right side of Bonsai. This is the location where the USB has been plugged in to connect the flyPAD to the PC. 
+If no port is available to select, first check if you plugged in the USB cable correctly to your computer as well as to the FPGA board. 
+If there is still no port, this is because you either have not installed the correct FTDI drivers for your operating system, or you don’t have them saved in the same folder where Bonsai is.
+ 
+Then select the 'MatrixWriter' node (the ‘M’ icon) to adjust its properties on the right side of Bonsai. 
+Change the 'Layout' to 'RowMajor'. 
+In the 'Path' section select the folder and the filename where you want to save the file. 
+You can automatically append a Timestamp or number to the file by choosing an appropriate entry in the 'Suffix'.
+ 
+
+Data Analysis:
+ 
+In order to analyze the capacitance data graphically, download the compiled matlab code, called “Data Analysis standalone software” (you do not need matlab installed to run this). 
+To analyze data, first open this compiled code and respond to the pop-up windows as follows: 
+“use existing data file?” = ok 
+→ “Do you take all conditions without reordering them?” = ok 
+→ Select destination folder where capacitance data was saved in, title analysis file to be saved in this folder, and click save 
+→ “Do you want to load the log file?” = ok 
+→ select log file in folder where capacitance data was saved in 
+→ Label substrates 1 and 2 and click ‘ok’ (1 is the food in the left electrode, 2 is the food in the right electrode) 
+→ label the condition of the experiment, click ‘ok’ 
+→ In the ‘Conditions’ window, only change the ‘Duration in seconds’ section (this number is the duration of your experiment in seconds, multiplied by 100), leaving all other sections as they appear. Click ‘ok’ 
+→ “Do you want to plot the results?” = ok
+ 
+Wait for matlab to produce all the graphs, excel files, and statistics, which can be found in the ‘mrep’ folder within the folder where the capacitance data was saved.
+ 
+
+Naming Capacitance Data Files:
+ 
+Wherever you choose to save your data from Bonsai, it must be named a specific way.
+Example: “CapacitanceData_C01_01_08_2017-02-21T11_07_11.dat”
+→ “CapacitanceData” is case sensitive and always begins the naming.
+→ “_C01_” represents the condition you are using in your experiment.
+→ “01_08_” shows which channels in what arenas this condition is being tested on. 
+      Note there are 8 channels in total, each arena has 2 channels. 
+      The channel numbers in the file name are all one more than their actual number shown in Bonsai. (so channel 0 on the flyPAD is numbered as 1 in the file name)
+→ “2017-02-21T11_07_11.dat” is an automatically generated Timestamp suffix.
